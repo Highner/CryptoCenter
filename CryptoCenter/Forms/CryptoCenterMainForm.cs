@@ -12,19 +12,34 @@ namespace CryptoCenter
 {
     public partial class CryptoCenterMainForm : Form
     {
+        #region private fields
+        ViewModels.MainViewModel _MainViewModel = new ViewModels.MainViewModel();
+        #endregion
+
+        #region constructor
         public CryptoCenterMainForm()
         {
             InitializeComponent();
-            var cont = new Data.DataControllers.CryptoCompareDataController(Enumerables.DataIntervalTypeEnum.Minute, "BTC", "USD");
-            var repo = new Model.DataRepositoryBase<Model.OHCLData>();
-            var serv = new Services.DataServiceBase<Model.OHCLData>(cont, repo, 10000);
-            repo.NewDataAdded += dataadded;
-            serv.Start();
-        }
+            _MainViewModel.Context = System.Threading.SynchronizationContext.Current;
+            _MainViewModel.StartOHCLService();
+            _MainViewModel.GetNews();
+            _MainViewModel.StartTickerService();
+            _MainViewModel.StartSocialStatsService();
 
-        private void dataadded(object sender, Services.DataServiceNewDataEventArgs<Model.OHCLData> e)
-        {
-            System.Windows.Forms.MessageBox.Show("new data added with: " + e.Items.LastOrDefault().Time.ToShortTimeString());
+            dataGridView2.DataBindings.Add("DataSource", _MainViewModel, "SocialStatsDay.Items", true, DataSourceUpdateMode.OnPropertyChanged);
+
+            TickerContainer.SetItems(_MainViewModel.Ticker.Items);
+            cryptoChart1.AddSeries(new Controls.Chart.ChartSeriesVolume(_MainViewModel.OHCLMinute.Items, "BTC Volume Minute", "BTC to USD Volume"));
+            cryptoChart1.AddSeries(new Controls.Chart.ChartSeriesOHCL(_MainViewModel.OHCLMinute.Items, "BTC Price Minute", "BTC to USD Price"));
+
+            cryptoChart1.AnimationsEnabled = false;
+            
         }
+        #endregion
+
+
+
+
+
     }
 }

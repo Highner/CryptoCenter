@@ -22,7 +22,6 @@ namespace CryptoCenter.Services
             _Repository = repository;
             _Timer.Interval = timerinterval;
             _Timer.Tick += TimerTick;
-            NewData += OnNewData;
         }
         #endregion
 
@@ -43,25 +42,35 @@ namespace CryptoCenter.Services
             _Timer.Interval = milliseconds;
             if (timerrunning) { _Timer.Start(); };
         }
+        public void GetData()
+        {
+            GetNewData();
+        }
         #endregion
 
-            #region private methods
+        #region private methods
         private void TimerTick(object sender, EventArgs e)
         {
-            if (!(_FetchingData)) { GetNewData(); };
+            GetNewData();
         }
         async void GetNewData()
         {
-            _FetchingData = true;
-            var result = await Task.Run(() => _Controller.GetNewData(_Repository));
-            _FetchingData = false;
-            if (result.Any()) { NewData(this, new DataServiceNewDataEventArgs<t>() { Items = result }); }
+            if (!(_FetchingData))
+            {
+                _FetchingData = true;
+                var result = await Task.Run(() => _Controller.GetNewData(_Repository));
+                _FetchingData = false;
+                if (result.Any()) { OnNewData(result); }
+            }
         }
-        private void OnNewData(object sender, DataServiceNewDataEventArgs<t> e)
+        private void OnNewData(t[] items)
         {
-            _Repository.OnNewDataAdded( e.Items );
+            EventHandler<Services.DataServiceNewDataEventArgs<t>> tmpevent = NewData;
+            if (tmpevent != null)
+            {
+                tmpevent(this, new Services.DataServiceNewDataEventArgs<t>() { Items = items });
+            }
         }
-   
         #endregion
 
         #region events

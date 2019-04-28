@@ -15,14 +15,25 @@ namespace CryptoCenter.Data.DataControllers
   
         public t[] GetNewData(Model.DataRepositoryBase<t> repository)
         {
-            List<t> latestdata = GetData(_LastTimeStamp);
-            var newdata = latestdata.Where(x => x.UnixTime > _LastTimeStamp).ToArray();
-            if (newdata.Any())
+            if(repository.Items.Any())
             {
-                repository.AddItems(newdata);
-                _LastTimeStamp = newdata.Max(x => x.UnixTime);
-                return newdata;
+                var maxtime = repository.Items.Max(x => x.UnixTime);
+                var mintime = repository.Items.Min(x => x.UnixTime);
+                _LastTimeStamp = maxtime;
+            } else { _LastTimeStamp = 0; }
+            List<t> latestdata;
+            try
+            {
+                latestdata = GetData(_LastTimeStamp);
+                if (latestdata.Any())
+                {
+                    repository.AddItems(latestdata.ToArray());
+                    return latestdata.ToArray();
+                }
             }
+            catch
+            { }
+
             return new t[] { };
         }
     }

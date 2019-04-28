@@ -13,6 +13,6 @@ namespace CryptoCenter.Model.CryptoCompare
         public double low;
         public double close;
         public double volumefrom;
-        public double time;
+        public int time;
     }
 }

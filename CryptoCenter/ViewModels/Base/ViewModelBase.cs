@@ -5,12 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Reflection;
 
 namespace CryptoCenter.ViewModels
 {
     public abstract class ViewModelBase : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+        public System.Threading.SynchronizationContext Context;
 
         /// <summary>
         /// Checks if a property already matches a desired value.  Sets the property and
@@ -44,5 +46,18 @@ namespace CryptoCenter.ViewModels
             if (eventHandler != null)
                 eventHandler(this, new PropertyChangedEventArgs(propertyName));
         }
-    }
+
+        public void AllPropertiesChanged()
+        {
+            PropertyInfo[] properties = this.GetType().GetProperties();
+       
+            foreach (PropertyInfo property in properties)
+            {
+                if(property.CanRead)
+                {
+                    OnPropertyChanged(property.Name);
+                }
+            }
+        }
+}
 }

@@ -8,6 +8,6 @@ namespace CryptoCenter.Interfaces
 {
     public interface IHasUnixTime
     {
-        double UnixTime { get; set; }
+        int UnixTime { get; set; }
     }
 }

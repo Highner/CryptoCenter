@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace CryptoCenter.Interfaces
 {
-    public interface IHasNewDataAdded<t> where t : IHasUnixTime
+    public interface IIsChartItem
     {
-        event EventHandler<Services.DataServiceNewDataEventArgs<t>> DataChanged;
+        string XAxisValue { get; }
     }
 }

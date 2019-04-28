@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace CryptoCenter.Model.CryptoCompare
 {
-    public class CryptoCompareDataObject<t>
+    public class CryptoCompareTickerCurrencyDataObject
     {
-        public t[] Data;
+        public CryptoCompareTickerDataObject[] BTC;
     }
 }
