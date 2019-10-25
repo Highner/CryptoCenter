@@ -46,8 +46,27 @@ namespace CryptoCenter.Controls
             Controls.TickerTile tile = new TickerTile();
             tile.ViewModel = item;
             tile.SetDataBindings();
+            tile.ItemDoubleClicked += OnTickerItemDoubleClicked;
             FlowPanel.Controls.Add(tile);
         }
 
+        #region events
+        private void OnTickerItemDoubleClicked(object sender, EventArgs e)
+        {
+            EventHandler< Events.TickerTileItemClickedEventArgs> tmpevent = TickerItemDoubleClicked;
+            CryptoCenter.Controls.TickerTile item = (CryptoCenter.Controls.TickerTile)sender;
+            if ( _Items.Where(x => x.Selected).Any())
+            {
+                _Items.Where(x => x.Selected).FirstOrDefault().Selected = false;
+            }
+            item.ViewModel.Selected = true;
+            if (tmpevent != null)
+            {
+                tmpevent(sender, new CryptoCenter.Events.TickerTileItemClickedEventArgs() { Item = item.ViewModel });
+            }
+        }
+
+        public event EventHandler<Events.TickerTileItemClickedEventArgs> TickerItemDoubleClicked;
+        #endregion
     }
 }

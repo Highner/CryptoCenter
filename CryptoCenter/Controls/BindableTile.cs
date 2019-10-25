@@ -17,7 +17,21 @@ namespace CryptoCenter.Controls
         public BindableTile()
         {
            InitializeComponent();
+           MouseDoubleClick += OnItemDoubleClicked;
         }
+        #endregion
+
+        #region events
+        private void OnItemDoubleClicked(object sender, EventArgs e)
+        {
+            EventHandler tmpevent = ItemDoubleClicked;
+            if (tmpevent != null)
+            {
+                tmpevent(sender, null);
+            }
+        }
+
+        public event EventHandler ItemDoubleClicked;
         #endregion
     }
 }

@@ -15,6 +15,6 @@ namespace CryptoCenter.ViewModels
         public double Volume { get { return Data.Volume; } }
         public int UnixTime { get { return Data.UnixTime; } }
         public DateTime Time { get { return Data.Time; } }
-        public string XAxisValue { get { return Data.Time.ToShortTimeString(); } }
+        public string XAxisValue { get { return Data.Time.ToString(); } }
     }
 }

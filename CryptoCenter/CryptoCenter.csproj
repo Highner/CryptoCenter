@@ -9,12 +9,30 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CryptoCenter</RootNamespace>
     <AssemblyName>CryptoCenter</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +42,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -32,7 +50,60 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>CryptoCenter.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Accord, Version=3.8.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.3.8.0\lib\net46\Accord.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Accord.Genetic, Version=3.8.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.Genetic.3.8.0\lib\net46\Accord.Genetic.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Accord.Math, Version=3.8.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.Math.3.8.0\lib\net46\Accord.Math.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Accord.Math.Core, Version=3.8.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.Math.3.8.0\lib\net46\Accord.Math.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Accord.Neuro, Version=3.8.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.Neuro.3.8.0\lib\net46\Accord.Neuro.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Accord.Statistics, Version=3.8.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.Statistics.3.8.0\lib\net46\Accord.Statistics.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Cntk.Core.Managed-2.7, Version=2.7.0.0, Culture=neutral, PublicKeyToken=a82c1f3f67b62253, processorArchitecture=AMD64">
+      <HintPath>..\packages\CNTK.GPU.2.7.0\lib\netstandard2.0\Cntk.Core.Managed-2.7.dll</HintPath>
+    </Reference>
+    <Reference Include="EasyCNTK, Version=0.4.2.0, Culture=neutral, processorArchitecture=AMD64">
+      <HintPath>..\packages\EasyCNTK.0.4.2\lib\netstandard2.0\EasyCNTK.dll</HintPath>
+    </Reference>
     <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
       <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
       <Private>True</Private>
@@ -54,6 +125,9 @@
     <Reference Include="RestSharp, Version=106.6.9.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
       <HintPath>..\packages\RestSharp.106.6.9\lib\net452\RestSharp.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="RNNSharp">
+      <HintPath>..\..\RNNSharp-master\RNNSharp\bin\Release\RNNSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -79,9 +153,12 @@
     <Compile Include="Controls\BindableTile.Designer.cs">
       <DependentUpon>BindableTile.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Chart\ChartSeriesSingleValue.cs" />
+    <Compile Include="Controls\Chart\ChartSeriesSocialStats.cs" />
+    <Compile Include="Controls\Chart\ChartSeriesAverage.cs" />
     <Compile Include="Controls\Chart\ChartSeriesBase.cs" />
     <Compile Include="Controls\Chart\ChartSeriesOHCL.cs" />
-    <Compile Include="Controls\Chart\ChartSeriesLine.cs" />
+    <Compile Include="Controls\Chart\ChartSeriesVolume.cs" />
     <Compile Include="Controls\CryptoChart.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -105,6 +182,8 @@
     <Compile Include="Data\DataControllers\OHCLDataControllerBase.cs" />
     <Compile Include="Data\DataControllers\TickerDataControllerBase.cs" />
     <Compile Include="Enumerables\DataIntervalTypeEnum.cs" />
+    <Compile Include="Events\NeuroNetworkEpochTrainedEventArgs.cs" />
+    <Compile Include="Events\TickerTileItemClickedEventArgs.cs" />
     <Compile Include="Forms\CryptoCenterMainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,8 +191,14 @@
       <DependentUpon>CryptoCenterMainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Conversion.cs" />
+    <Compile Include="Helpers\HelperExtensions.cs" />
     <Compile Include="Helpers\PropertyComparison.cs" />
     <Compile Include="Helpers\ThreadSafety.cs" />
+    <Compile Include="Indicators\Base\IIndicator.cs" />
+    <Compile Include="Indicators\Base\IndicatorBase.cs" />
+    <Compile Include="Indicators\Base\IndicatorSignal.cs" />
+    <Compile Include="Indicators\LSTMPrecentageChangeIndicator.cs" />
+    <Compile Include="Indicators\PrecentageChangeIndicator.cs" />
     <Compile Include="Interfaces\IHasGetNewData.cs" />
     <Compile Include="Interfaces\IHasID.cs" />
     <Compile Include="Interfaces\ICryptoDataController.cs" />
@@ -122,6 +207,11 @@
     <Compile Include="Interfaces\IIsChartSeries.cs" />
     <Compile Include="Interfaces\IIsListViewItem.cs" />
     <Compile Include="Interfaces\IHasUnixTime.cs" />
+    <Compile Include="Model\BitThought\BitThoughtFactory.cs" />
+    <Compile Include="Model\BitThought\BitThoughtHelpers.cs" />
+    <Compile Include="Model\BitThought\BitThoughtNeuralNet.cs" />
+    <Compile Include="Model\BitThought\LSTMSequenceClassifier.cs" />
+    <Compile Include="Model\BitThought\SourceData.cs" />
     <Compile Include="Model\CryptoCompare\CryptoCompareDataObject.cs" />
     <Compile Include="Model\CryptoCompare\CryptoCompareNewsItemDataObject.cs" />
     <Compile Include="Model\CryptoCompare\CryptoCompareOHLCDataObject.cs" />
@@ -135,23 +225,35 @@
     <Compile Include="Model\Main\SingleValueData.cs" />
     <Compile Include="Model\Main\SocialStatsData.cs" />
     <Compile Include="Model\Main\TickerData.cs" />
+    <Compile Include="NeuroNetworks\Base\ActivationNetworkBase.cs" />
+    <Compile Include="NeuroNetworks\Base\DeepBeliefNetworkBase.cs" />
+    <Compile Include="NeuroNetworks\Base\INeuroNetwork.cs" />
+    <Compile Include="NeuroNetworks\Base\NeuroNetworkBase.cs" />
+    <Compile Include="NeuroNetworks\LSTMPercentageChangeNetwork.cs" />
+    <Compile Include="NeuroNetworks\PrecentageChangeNetwork.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\ChartSeriesNewDataEventArgs.cs" />
+    <Compile Include="Events\ChartSeriesNewDataEventArgs.cs" />
     <Compile Include="Services\DataServiceBase.cs" />
-    <Compile Include="Services\DataServiceNewDataEventArgs.cs" />
+    <Compile Include="Events\DataServiceNewDataEventArgs.cs" />
+    <Compile Include="Services\OHLCDataService.cs" />
     <Compile Include="Settings\CryptoConstants.cs" />
+    <Compile Include="ViewModels\Base\IndicatorViewModelBase.cs" />
     <Compile Include="ViewModels\Base\ItemViewModelBase.cs" />
     <Compile Include="ViewModels\Base\ListViewModelBase.cs" />
+    <Compile Include="ViewModels\ItemViewModelChartValue.cs" />
     <Compile Include="ViewModels\ItemViewModelNews.cs" />
     <Compile Include="ViewModels\ItemViewModelOHCL.cs" />
     <Compile Include="ViewModels\ItemViewModelVolume.cs" />
     <Compile Include="ViewModels\ItemViewModelSocialStats.cs" />
     <Compile Include="ViewModels\ItemViewModelTicker.cs" />
+    <Compile Include="ViewModels\ListViewModelChartValue.cs" />
     <Compile Include="ViewModels\ListViewModelTicker.cs" />
     <Compile Include="ViewModels\ListViewModelVolume.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\Base\ViewModelBase.cs" />
+    <Compile Include="ViewModels\LSTMPercentagChangeIndicatorViewModel.cs" />
+    <Compile Include="ViewModels\PercentagChangeIndicatorViewModel.cs" />
     <EmbeddedResource Include="Controls\BindableTile.resx">
       <DependentUpon>BindableTile.cs</DependentUpon>
     </EmbeddedResource>
@@ -175,6 +277,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -190,8 +293,31 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Dieses Projekt verweist auf mindestens ein NuGet-Paket, das auf diesem Computer fehlt. Verwenden Sie die Wiederherstellung von NuGet-Paketen, um die fehlenden Dateien herunterzuladen. Weitere Informationen finden Sie unter "http://go.microsoft.com/fwlink/?LinkID=322105". Die fehlende Datei ist "{0}".</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Accord.3.8.0\build\Accord.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Accord.3.8.0\build\Accord.targets'))" />
+    <Error Condition="!Exists('..\packages\CNTK.Deps.Cuda.2.7.0\build\netstandard2.0\CNTK.Deps.Cuda.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CNTK.Deps.Cuda.2.7.0\build\netstandard2.0\CNTK.Deps.Cuda.targets'))" />
+    <Error Condition="!Exists('..\packages\CNTK.Deps.cuDNN.2.7.0\build\netstandard2.0\CNTK.Deps.cuDNN.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CNTK.Deps.cuDNN.2.7.0\build\netstandard2.0\CNTK.Deps.cuDNN.targets'))" />
+    <Error Condition="!Exists('..\packages\CNTK.Deps.MKL.2.7.0\build\netstandard2.0\CNTK.Deps.MKL.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CNTK.Deps.MKL.2.7.0\build\netstandard2.0\CNTK.Deps.MKL.targets'))" />
+    <Error Condition="!Exists('..\packages\CNTK.Deps.OpenCV.Zip.2.7.0\build\netstandard2.0\CNTK.Deps.OpenCV.Zip.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CNTK.Deps.OpenCV.Zip.2.7.0\build\netstandard2.0\CNTK.Deps.OpenCV.Zip.targets'))" />
+    <Error Condition="!Exists('..\packages\CNTK.GPU.2.7.0\build\netstandard2.0\CNTK.GPU.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CNTK.GPU.2.7.0\build\netstandard2.0\CNTK.GPU.targets'))" />
+  </Target>
+  <Import Project="..\packages\Accord.3.8.0\build\Accord.targets" Condition="Exists('..\packages\Accord.3.8.0\build\Accord.targets')" />
+  <Import Project="..\packages\CNTK.Deps.Cuda.2.7.0\build\netstandard2.0\CNTK.Deps.Cuda.targets" Condition="Exists('..\packages\CNTK.Deps.Cuda.2.7.0\build\netstandard2.0\CNTK.Deps.Cuda.targets')" />
+  <Import Project="..\packages\CNTK.Deps.cuDNN.2.7.0\build\netstandard2.0\CNTK.Deps.cuDNN.targets" Condition="Exists('..\packages\CNTK.Deps.cuDNN.2.7.0\build\netstandard2.0\CNTK.Deps.cuDNN.targets')" />
+  <Import Project="..\packages\CNTK.Deps.MKL.2.7.0\build\netstandard2.0\CNTK.Deps.MKL.targets" Condition="Exists('..\packages\CNTK.Deps.MKL.2.7.0\build\netstandard2.0\CNTK.Deps.MKL.targets')" />
+  <Import Project="..\packages\CNTK.Deps.OpenCV.Zip.2.7.0\build\netstandard2.0\CNTK.Deps.OpenCV.Zip.targets" Condition="Exists('..\packages\CNTK.Deps.OpenCV.Zip.2.7.0\build\netstandard2.0\CNTK.Deps.OpenCV.Zip.targets')" />
+  <Import Project="..\packages\CNTK.GPU.2.7.0\build\netstandard2.0\CNTK.GPU.targets" Condition="Exists('..\packages\CNTK.GPU.2.7.0\build\netstandard2.0\CNTK.GPU.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

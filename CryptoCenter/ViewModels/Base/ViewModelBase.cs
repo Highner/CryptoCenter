@@ -14,6 +14,20 @@ namespace CryptoCenter.ViewModels
         public event PropertyChangedEventHandler PropertyChanged;
         public System.Threading.SynchronizationContext Context;
 
+        private bool _IsBusy;
+        public bool IsBusy
+        {
+            get
+            {
+                return _IsBusy;
+            }
+            set
+            {
+                _IsBusy = value;
+                OnPropertyChanged("IsBusy");
+            }
+        }
+
         /// <summary>
         /// Checks if a property already matches a desired value.  Sets the property and
         /// notifies listeners only when necessary.

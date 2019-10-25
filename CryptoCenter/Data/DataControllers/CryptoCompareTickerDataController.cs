@@ -50,7 +50,7 @@ namespace CryptoCenter.Data.DataControllers
                }
             }
            
-            return finaldata.OrderBy(x => x.Time).ToList();
+            return finaldata.OrderByDescending(x => x.Volume24HourTo).ToList();
         }
         private Model.Main.TickerData ConvertFromSource(Model.CryptoCompare.CryptoCompareTickerDataObject item)
         {

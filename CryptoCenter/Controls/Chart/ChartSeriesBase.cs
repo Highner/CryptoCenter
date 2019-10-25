@@ -39,7 +39,7 @@ namespace CryptoCenter.Controls.Chart
         }
         #endregion
 
-        #region provate methods
+        #region private methods
         void AddNewItem(t item)
         {
             OnNewData(GenerateChartSeriesValue(item), XAxisLabel, item.XAxisValue);
@@ -49,6 +49,12 @@ namespace CryptoCenter.Controls.Chart
         {
             OnChangedData(GenerateChartSeriesValue(item), index);
         }
+
+        void ClearItems()
+        {
+            OnDataCleared();
+        }
+
         void ListChanged(object sender, ListChangedEventArgs e)
         {
             BindingList<t> items = (BindingList<t>)sender;
@@ -59,6 +65,10 @@ namespace CryptoCenter.Controls.Chart
             else if (e.ListChangedType == ListChangedType.ItemChanged)
             {
                 ChangeItem(items[e.NewIndex], e.OldIndex);
+            }
+            else if (e.ListChangedType == ListChangedType.Reset)
+            {
+                ClearItems();
             }
         }
         #endregion
@@ -78,12 +88,22 @@ namespace CryptoCenter.Controls.Chart
             EventHandler<Services.ChartSeriesDataChangedEventArgs> tmpevent = ChangedData;
             if (tmpevent != null)
             {
-                tmpevent(this, new Services.ChartSeriesDataChangedEventArgs() { Item = item, Index = index , ID = ID, Title = SeriesLabel });
+                tmpevent(this, new Services.ChartSeriesDataChangedEventArgs() { Item = item, Index = index, ReversedIndex = Items.Count -1 - index, ID = ID, Title = SeriesLabel });
+            }
+        }
+
+        private void OnDataCleared()
+        {
+            EventHandler<Services.ChartSeriesEventArgs> tmpevent = DataCleared;
+            if (tmpevent != null)
+            {
+                tmpevent(this, new Services.ChartSeriesEventArgs() { Title = SeriesLabel });
             }
         }
 
         public event EventHandler<ChartSeriesNewDataEventArgs> NewData;
         public event EventHandler<ChartSeriesDataChangedEventArgs> ChangedData;
+        public event EventHandler<ChartSeriesEventArgs> DataCleared;
         #endregion
     }
 }

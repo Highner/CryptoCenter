@@ -18,9 +18,14 @@ namespace CryptoCenter.Data.DataControllers
             if(repository.Items.Any())
             {
                 var maxtime = repository.Items.Max(x => x.UnixTime);
-                var mintime = repository.Items.Min(x => x.UnixTime);
+                //var mintime = repository.Items.Min(x => x.UnixTime);
                 _LastTimeStamp = maxtime;
-            } else { _LastTimeStamp = 0; }
+            }
+            else
+            {
+                _LastTimeStamp = 0;
+            }
+
             List<t> latestdata;
             try
             {

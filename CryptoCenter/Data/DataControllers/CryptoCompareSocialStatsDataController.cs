@@ -27,7 +27,7 @@ namespace CryptoCenter.Data.DataControllers
 
             List<Model.CryptoCompare.CryptoCompareSocialStatsDataObject> cryptocomparefinaldata = new List<Model.CryptoCompare.CryptoCompareSocialStatsDataObject>();
 
-            int limit = 200;
+            int limit = 1000;
             int maxintervals = 1;
             for (int x = 0; x < maxintervals; x++)
             {

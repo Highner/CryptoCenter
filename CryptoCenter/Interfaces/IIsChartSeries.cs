@@ -16,5 +16,6 @@ namespace CryptoCenter.Interfaces
         int ID { get; set; }
         event EventHandler<ChartSeriesNewDataEventArgs> NewData;
         event EventHandler<ChartSeriesDataChangedEventArgs> ChangedData;
+        event EventHandler<ChartSeriesEventArgs> DataCleared;
     }
 }

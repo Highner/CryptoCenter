@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CryptoCenter.ViewModels
 {
-    public class ItemViewModelSocialStats : Base.ItemViewModelBase<Model.Main.SocialStatsData>
+    public class ItemViewModelSocialStats : Base.ItemViewModelBase<Model.Main.SocialStatsData>, Interfaces.IIsChartItem
     {
         public double TwitterFollowers
         {
@@ -64,5 +64,6 @@ namespace CryptoCenter.ViewModels
                 return Data.Time;
             }
         }
+        public string XAxisValue { get { return Data.Time.ToString(); } }
     }
 }

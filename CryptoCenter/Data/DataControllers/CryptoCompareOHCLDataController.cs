@@ -18,6 +18,17 @@ namespace CryptoCenter.Data.DataControllers
             _Currency1 = currency1;
             _Currency2 = currency2;
         }
+        public CryptoCompareOHCLDataController(DataIntervalTypeEnum interval, string currency1, string currency2, int maxintervals)
+        {
+            _Interval = interval;
+            _Currency1 = currency1;
+            _Currency2 = currency2;
+            _MaxIntervals = maxintervals;
+        }
+        #endregion
+
+        #region private fields
+        int _MaxIntervals = 2;
         #endregion
 
         #region private methods
@@ -27,9 +38,8 @@ namespace CryptoCenter.Data.DataControllers
 
             List<Model.CryptoCompare.CryptoCompareOHLCDataObject> cryptocomparefinaldata = new List<Model.CryptoCompare.CryptoCompareOHLCDataObject>();
 
-            int limit = 200;
-            int maxintervals = 1;
-            for (int x = 0; x < maxintervals; x++)
+            int limit = 2000;
+             for (int x = 0; x < _MaxIntervals; x++)
             {
                 string timestamp = "";
                 if (!(x == 0))
@@ -60,7 +70,16 @@ namespace CryptoCenter.Data.DataControllers
 
         private OHCLData ConvertFromSource(Model.CryptoCompare.CryptoCompareOHLCDataObject item)
         {
-            return new OHCLData() { ListID = _Currency1 + _Currency2, CurrencyTo = _Currency2, CurrencyFrom = _Currency1, Open = item.open, Close = item.close, High = item.high, ID = item.time.ToString(), Low = item.low, Time = Helpers.Conversion.UnixTimeStampToDateTime(item.time), Volume = item.volumefrom, UnixTime = item.time};
+            
+            return new OHCLData() { ListID = _Currency1 + _Currency2, CurrencyTo = _Currency2, CurrencyFrom = _Currency1, Open = item.open, Close = item.close, High = item.high, ID = item.time.ToString(), Low = item.low, Time = Helpers.Conversion.UnixTimeStampToDateTime(item.time), Volume = (item.volumefrom * item.close), UnixTime = item.time};
+        }
+        #endregion
+
+        #region public methods
+        public void ChangeCurrencies(string currency1, string currency2)
+        {
+            _Currency1 = currency1;
+            _Currency2 = currency2;
         }
         #endregion
     }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace CryptoCenter.Controls
 {
     class TickerTile: BindableTile
@@ -41,6 +42,8 @@ namespace CryptoCenter.Controls
             PictureBox.Image = ViewModel.Image;
         }
         #endregion
+
+
 
         private void InitializeComponent()
         {

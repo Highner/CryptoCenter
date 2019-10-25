@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CryptoCenter.Model.Main
+namespace CryptoCenter.Model
 {
     public class SingleValueData : Interfaces.IIsListViewItem, Interfaces.IHasUnixTime
     {

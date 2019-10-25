@@ -8,7 +8,7 @@ using CryptoCenter.Model;
 
 namespace CryptoCenter.Data.DataControllers
 {
-    abstract class OHCLDataControllerBase : CryptoDataControllerBase<OHCLData>
+    abstract public class OHCLDataControllerBase : CryptoDataControllerBase<OHCLData>
     {
         #region private fields
         protected DataIntervalTypeEnum _Interval;

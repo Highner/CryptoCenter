@@ -6,16 +6,22 @@ using System.Threading.Tasks;
 
 namespace CryptoCenter.Services
 {
-    public class ChartSeriesDataChangedEventArgs : EventArgs
+    public class ChartSeriesEventArgs : EventArgs
+    {
+        public string Title;
+    }
+
+    public class ChartSeriesDataChangedEventArgs : ChartSeriesEventArgs
     {
         public object Item;
         public int ID;
-        public string Title;
         public int Index;
+        public int ReversedIndex;
     }
     public class ChartSeriesNewDataEventArgs : ChartSeriesDataChangedEventArgs
     {
         public string LabelItem;
         public string XAxisLabel;
     }
+
 }

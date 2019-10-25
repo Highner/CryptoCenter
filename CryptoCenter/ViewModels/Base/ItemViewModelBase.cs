@@ -23,5 +23,7 @@ namespace CryptoCenter.ViewModels.Base
                 AllPropertiesChanged();
             }
         }
+        [Browsable(false)]
+        public bool Selected;
     }
 }

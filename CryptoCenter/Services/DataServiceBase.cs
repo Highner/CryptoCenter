@@ -10,7 +10,7 @@ namespace CryptoCenter.Services
     {
         #region private fields
         private System.Windows.Forms.Timer _Timer = new System.Windows.Forms.Timer();
-        private Interfaces.IHasGetNewData<t> _Controller;
+        protected Interfaces.IHasGetNewData<t> _Controller;
         private Model.DataRepositoryBase<t> _Repository;
         private bool _FetchingData = false;
         #endregion

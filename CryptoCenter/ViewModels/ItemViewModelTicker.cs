@@ -36,7 +36,7 @@ namespace CryptoCenter.ViewModels
                 return Data.CurrencyTo + " " + Data.Volume24HourTo.ToString("N2");
             }
         }
-        public System.Drawing.Image Image
+         public System.Drawing.Image Image
         {
             get
             {
